@@ -321,37 +321,37 @@ async function main() {
   
   const user = await initializeKeypair(connection)
 
-  // const mint = await createNewMint(connection, user, user.publicKey, user.publicKey, 2);
+  const mint = await createNewMint(connection, user, user.publicKey, user.publicKey, 2);
 
-  // const tokenAccount = await createTokenAccount(connection, user, mint, user.publicKey);
+  const tokenAccount = await createTokenAccount(connection, user, mint, user.publicKey);
 
-  // await mintTokens(connection, user, mint, tokenAccount.address , user, 100);
+  await mintTokens(connection, user, mint, tokenAccount.address , user, 100);
 
-  // console.log("PublicKey:", user.publicKey.toBase58())
+  console.log("PublicKey:", user.publicKey.toBase58())
 
-  // const receiver = web3.Keypair.generate().publicKey
+  const receiver = web3.Keypair.generate().publicKey
     
-  // const receiverTokenAccount = await createTokenAccount(
-  //     connection,
-  //     user,
-  //     mint,
-  //     receiver
-  // )
+  const receiverTokenAccount = await createTokenAccount(
+      connection,
+      user,
+      mint,
+      receiver
+  )
 
-  // await transferTokens(
-  //   connection,
-  //   user,
-  //   tokenAccount.address,
-  //   receiverTokenAccount.address,
-  //   user,
-  //   50,
-  //   mint
-  // )
+  await transferTokens(
+    connection,
+    user,
+    tokenAccount.address,
+    receiverTokenAccount.address,
+    user,
+    50,
+    mint
+  )
   
-  // await burnTokens(connection, user, tokenAccount.address, mint, user, 25)
+  await burnTokens(connection, user, tokenAccount.address, mint, user, 25)
   
   
-  const MINT_ADDRESS = "9pYvu9vGL1JmDYbK7RC1EB6kTgHURGGpFB1XmE8xzSVn" 
+  const MINT_ADDRESS = "95ahsSaZrYkHKiocMgEoSwA1jtxBiB7iiW14yJKJ4xeY" 
   
   const metaplex = Metaplex.make(connection)
     .use(keypairIdentity(user))
@@ -369,9 +369,9 @@ async function main() {
     metaplex,
     new web3.PublicKey(MINT_ADDRESS),
     user,
-    "LamaV1",
-    "LAMAv1",
-    "The first Lama in there and start of universe.",
+    "Rise",
+    "RISE",
+    "The first Rise in there and start of universe.",
   )
     
 
